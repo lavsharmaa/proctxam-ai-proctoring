@@ -53,13 +53,21 @@ It has three vision based functionalities right now:
 - After student registration the admin needs to approve the student aaccount and then only the student will be able to login into the system.
 
 ## Images
+- Architecture Diagram <br>
 ![Architecture Diagram](output/architecture-diagram.png)<br>
+- Student Registration <br>
 ![Student Registration](output/register-screen.png)<br>
+- Student Login <br>
 ![Student Login](output/login-screen.png)<br>
+- Admin Dashboard <br>
 ![Admin Dashboard](output/admin-dashboard.png)<br>
+- Main Screen <br>
 ![Main Screen](output/main-screen.png)<br>
+- Grant Permission for audio/video <br>
 ![Grant Permission](output/grant-permission.png)<br>
+- Video Call <br>
 ![Video Call](output/video-call.png)<br>
+- Combined Model <br>
 ![Combine Model](output/combined-model.png)<br>
 
 ## Contributors
