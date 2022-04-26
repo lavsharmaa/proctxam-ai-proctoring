@@ -1,0 +1,200 @@
+
+</html>
+
+<!doctype html>
+<html>
+    <head>
+      
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+    </head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type=text/javascript>
+            $(function() {
+            $('a#test').on('click', function(e) {
+                e.preventDefault()
+                $.getJSON('/proct',
+                    function(data) {
+                //do nothing
+                });
+
+                return false;
+            });
+            });
+    </script>
+    <body  style="background-color: rgb(212, 229, 255);">
+        
+        <h1 style= "font-size: 15px; font-family: monospace;">
+            <p>AI Online Proctoring System</p>
+        </h1>
+        <div class="wh">
+        <form>
+            <center>
+            <style>
+                h1 {
+                    background-color: aliceblue;
+                    height: 40px;
+                    margin-top: -2px;
+                    border-radius: 7px;
+                    width: 100%;
+                    
+                }
+               h1 p {
+                position: relative;
+                
+                left: 5px;
+               }
+
+                label  {
+                    position: relative;
+                    top: -40px;
+                    font-size: 20px;
+                    font-weight: bold;
+                    font-family: monospace;
+                }
+                input { 
+                    position: relative;
+                    top: -40px;
+                    border-radius: 5px;
+                    background-color:rgb(231, 231, 231);
+                    border: none;
+                    height: 20px;
+                    width: 25%;
+                }
+                  #join_leave {
+                    position: relative;
+                    top: -40px;
+                    border-radius: 5px;
+                    background-color:rgb(77, 218, 108);
+                    height: 25px;
+                }
+              #count {
+                    position: relative;
+                    font-size: 16px;
+                    left: 500px;
+                    top: -77px;
+                    font-family: monospace;
+                    font-weight: bold;
+                    width: 30%;
+              }
+
+                   .participant {
+                        position: relative;
+                        top: -50px;
+                        margin-left: 15px;
+                    }
+                    #chat{
+                        position: relative;
+                        top: -100px;
+                        background-color: rgba(196, 196, 196, 0.445);
+                    }
+                    .btn {
+                        position: absolute; 
+                        top: 90%;
+                        left: 15%;
+                        background-color: rgb(27, 30, 32);
+                        border-radius: 7px;
+                        height: 50px;
+                        width: 70%;
+                        
+                    }
+                    
+                    .wh {
+                        background-color:white;
+                        height: 600%;
+                    }
+
+
+            </style>
+                <label for="username">Name: </label>
+                <input type="text" id="username" value = {{ session.name }}>
+                <button id="join_leave">Join call</button>
+                <p id="count" > Disconnected. </p>
+                
+                
+             <div class="btn"> 
+                <button id="share_screen" class="fa fa-desktop" disabled  style="border: none; color:rgb(255, 230, 0); background-color:transparent; height: 40px; font-size: 30px; margin-top:5px;">
+                </button>
+                <button id="toggle_chat" class="fa fa-commenting" disabled style=" background-color:transparent; border:none; color:rgb(224, 221, 255); height: 40px; font-size: 35px; margin-top:5px; margin-left: 40px;">
+                
+                </button>
+
+                <button id="off_video" style="position: relative; border-radius: 50px; border:none; background-color:rgb(255, 24, 24); height: 29px; width: 40px; margin-top:5px; margin-left: 40px; top: -5px">
+                    <img src='static/assets/camera-video-off.svg'>
+                </button>
+                <button id="on_video" class="fa fa-video-camera" style=" background-color:transparent; border:none; color:rgb(2, 221, 93); height: 40px; font-size: 35px; margin-top:5px; margin-left: 40px;"> 
+                
+                </button>
+                <!-- <button id="proc" class="fa fa-life-ring" href="{{ url_for('proct') }}" style=" background-color:transparent; border:none; color:rgb(2, 159, 221); height: 40px; font-size: 35px; margin-top:5px; margin-left: 40px;"> 
+                
+                </button> -->
+                <form>
+                    <a href=# id=test><button class='fa fa-life-ring' style=" background-color:transparent; border:none; color:rgb(2, 159, 221); height: 40px; font-size: 35px; margin-top:5px; margin-left: 40px;"></button></a>
+                </form>
+                <!-- <button id="proc" class="fa fa-life-ring" href="{{ url_for('proct') }}">Start Proctoring</button> -->
+             </div>
+            </center> 
+        
+        </form>
+
+        <style>
+            #progressBar {
+                width: 90%;
+                margin: 10px auto;
+                height: 12px;
+                background-color: red;
+              }
+              
+              #progressBar div {
+                height: 100%;
+                text-align: right;
+                line-height: 12px; 
+                width: 0;
+                background-color: #CBEA00;
+                box-sizing: border-box;
+              }
+
+              .bar {
+                  color : #CBEA00;
+              }
+            </style>
+
+        <div id="root" >
+            <div id="container" class="container"  >
+                <div id="local" class="participant" style="background-image: url('static/assets/user.png'); width: 240px;
+                height: 205px;"><div id="off" > </div><div class="label" id="percentage">You <div id="progressBar">
+                    <div class="bar" ></div>
+            </div></div>
+            </div>
+            
+            <script>
+                function progress(timeleft, timetotal, $element) {
+                    var progressBarWidth = timeleft * $element.width() / timetotal;
+                    $element.find('div').animate({ width: progressBarWidth }, 500).html(Math.floor(timeleft/60) + ":"+ timeleft%60);
+                    if(timeleft > 0) {
+                        setTimeout(function() {
+                            progress(timeleft - 1, timetotal, $element);
+                        }, 50000);
+                    }
+                };
+                progress(100, 100, $('#progressBar'));
+                </script>
+
+            
+            <div id="chat">
+                <div id="chat-scroll">
+                    <div id="chat-content" >
+                        <!-- chat content will be added dynamically here -->
+                    </div>
+                </div>
+                <input id="chat-input" type="text" style="background-color: rgb(179, 179, 179); width: 300px;">
+            </div>
+        </div>
+   </div> 
+
+        <script src="https://media.twiliocdn.com/sdk/js/video/releases/2.3.0/twilio-video.min.js"></script>
+        <script src="https://media.twiliocdn.com/sdk/js/conversations/releases/1.0.0/twilio-conversations.min.js"></script>
+        <script src="{{ url_for('static', filename='app.js') }}"></script>
+    </body>
+</html>

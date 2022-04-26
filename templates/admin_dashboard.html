@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Proctoring Admin</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='newlogin/vendors/feather/feather.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='newlogin/vendors/mdi/css/materialdesignicons.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='newlogin/vendors/ti-icons/css/themify-icons.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='newlogin/vendors/typicons/typicons.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='newlogin/vendors/simple-line-icons/css/simple-line-icons.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='newlogin/vendors/css/vendor.bundle.base.css') }}">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='newlogin/vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='newlogin/js/select.dataTables.min.css') }}">
+
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='newlogin/css/vertical-layout-light/style.css') }}">
+  <!-- endinject -->
+  <!-- <link rel="shortcut icon" href="static/assets/images/favicon.png" /> -->
+</head>
+<body>
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+        <div class="me-3">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
+            <span class="icon-menu"></span>
+          </button>
+        </div>
+        <!-- <div>
+          <a class="navbar-brand brand-logo" href="index.html">
+            <img src="images/logo.svg" alt="logo" />
+          </a>
+          <a class="navbar-brand brand-logo-mini" href="index.html">
+            <img src="images/logo-mini.svg" alt="logo" />
+          </a>
+        </div> -->
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-top"> 
+        <ul class="navbar-nav">
+          <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
+            <h1 class="welcome-text">Hello there, <span class="text-black fw-bold">DBIT</span></h1>
+            <h3 class="welcome-sub-text">There are new students waiting for the approval.</h3>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-bs-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <i class="mdi mdi-grid-large menu-icon"></i>
+              <span class="menu-title">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('logout_admin') }}">
+              <span class="menu-title">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="home-tab">
+                <div class="d-sm-flex align-items-center justify-content-between border-bottom">
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="tab-content tab-content-basic">
+                  <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview"> 
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="statistics-details d-flex align-items-center justify-content-between">
+                          <div>
+                            <p class="statistics-title">No. of Students</p>
+                            <h3 class="rate-percentage">2</h3>
+                          </div>
+                          <div>
+                            <p class="statistics-title">Approved</p>
+                            <h3 class="rate-percentage">2</h3>
+                          </div>
+                          <div>
+                            <p class="statistics-title">Not Approved</p>
+                            <h3 class="rate-percentage">0</h3>
+                          </div>
+                          <!-- <div class="d-none d-md-block">
+                            <p class="statistics-title">Avg. Time on Site</p>
+                            <h3 class="rate-percentage">2m:35s</h3>
+                            <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
+                          </div>
+                          <div class="d-none d-md-block">
+                            <p class="statistics-title">New Sessions</p>
+                            <h3 class="rate-percentage">68.8</h3>
+                            <p class="text-danger d-flex"><i class="mdi mdi-menu-down"></i><span>68.8</span></p>
+                          </div>
+                          <div class="d-none d-md-block">
+                            <p class="statistics-title">Avg. Time on Site</p>
+                            <h3 class="rate-percentage">2m:35s</h3>
+                            <p class="text-success d-flex"><i class="mdi mdi-menu-down"></i><span>+0.8%</span></p>
+                          </div> -->
+                        </div>
+                      </div>
+                    </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="row flex-grow">
+                          <div class="col-12 grid-margin stretch-card">
+                            <div class="card card-rounded">
+                              <div class="card-body">
+                                <div class="d-sm-flex justify-content-between align-items-start">
+                                  <div>
+                                    <h4 class="card-title card-title-dash">Pending Requests</h4>
+                                  </div>
+                                </div>
+                                <div class="table-responsive  mt-1">
+                                  <table class="table select-table">
+                                    <thead>
+                                      <tr>
+                                        <th>Student</th>
+                                        <th>Email id</th>
+                                        <th>Student ID</th>
+                                        <th>Status</th>
+                                        <th>Approve</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      {% for row in data %}
+                                      <tr>
+                                        <td>
+                                          <div class="d-flex ">
+                                            <!-- <img src="static/assets/images/faces/face1.jpg" alt=""> -->
+                                            <div>
+                                              <h6>{{ row[0]+" "+row[1] }}</h6>
+                                              <p>{{ row[4] }}</p>
+                                            </div>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <h6>{{ row[2] }}</h6>
+                                        </td>
+                                        <td>
+                                          <div>
+                                            <h6>{{ row[3] }}</h6>
+                                          </div>
+                                        </td>
+                                        {% if row[5] == True %}
+                                        <td><div class="badge badge-opacity-success">Approved</div></td>
+                                        {% endif %}
+                                        {% if row[5] == False %}
+                                        <td><div class="badge badge-opacity-danger">Not Approved</div></td>
+                                        {% endif %}
+                                        <td>
+                                          {% if row[5] == True %}
+                                          <a href="{{ url_for('block_student', student_email=row[2]) }}" class="btn btn-primary btn-lg text-white mb-0 me-0" type="button" title="Block">Block</a>
+                                          {% endif %}
+                                          {% if row[5] == False %}
+                                          <!-- <button class="btn btn-primary btn-lg text-white mb-0 me-0" type="button">Approve</button> -->
+                                          <a href="{{ url_for('approve_student', student_email=row[2]) }}" class="btn btn-primary btn-lg text-white mb-0 me-0" type="button" title="Approve">Approve</a>
+                                          {% endif %}
+                                        </td>
+                                      </tr>
+                                      {% endfor %}
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-4 d-flex flex-column">
+                        <div class="row flex-grow">
+                          <div class="col-12 grid-margin stretch-card">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Github Link <a href="" target="_blank">AI Based Online Proctoring System</a></span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2022. All rights reserved.</span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <script type="text/javascript" src="{{url_for('static', filename='newlogin/vendors/js/vendor.bundle.base.js')}}"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='newlogin/js/template.js')}}"></script>
+
+</body>
+
+</html>
+
